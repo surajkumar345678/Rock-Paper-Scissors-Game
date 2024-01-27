@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper & Scissors Game</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Rock Paper Scissors Game</title>
 </head>
-
 <body>
-    <h1>Rock Paper & Scissors</h1>
-    <div class="choices">
-        <div class="choice" id="Rock">
-            <img src="./images/rock.png" alt="rock">
-        </div>
-        <div class="choice" id="Paper">
-            <img src="./images/paper.png" alt="Paper">
-        </div>
-        <div class="choice" id="Scissors">
-            <img src="./images/scissors.png" alt="Scissors">
-        </div>
-    </div>
 
-    <div class="scoreBoard">
-        <div class="score">
-            <p id="userScore">0</p>
-            <p>You</p>
-        </div>
-        <div class="score">
-            <p id="compScore">0</p>
-            <p>Comp</p>
-        </div>
-    </div>
+  <h1>Rock, Paper, Scissors</h1>
 
-    <div class="msgContainer">
-        <p id="msg">Play your move</p>
-    </div>
+  <div id="result">Choose your move:</div>
+  <div id="score">Player: 0, Computer: 0, Ties: 0, Total Moves: 0</div>
 
-    <script src="script.js"></script>
+  <div id="choices">
+    <div class="choice" onclick="playGame('rock')">✊ Rock</div>
+    <div class="choice" onclick="playGame('paper')">✋ Paper</div>
+    <div class="choice" onclick="playGame('scissors')">✌ Scissors</div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>

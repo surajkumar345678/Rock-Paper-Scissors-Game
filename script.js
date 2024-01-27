@@ -1,63 +1,54 @@
-let userScore = 0;
-let compScore = 0;
+var playerScore = 0;
+var computerScore = 0;
+var tieCount = 0;
+var totalCount = 0;
 
-const choices = document.querySelectorAll(".choice");
-const msg = document.querySelector("#msg");
+function playGame(playerChoice) {
+  var choices = ['rock', 'paper', 'scissors'];
+  var computerChoice = choices[Math.floor(Math.random() * 3)];
 
-const userScorePara = document.querySelector("#userScore");
-const compScorePara = document.querySelector("#compScore");
+  var result = '';
 
-const genCompChoice = () => {
-    const options = ["Rock", "Paper", "Scissors"];
-    const randIdx = Math.floor(Math.random() * 3);
-    return options[randIdx];
-};
+  if (playerChoice === computerChoice) {
+    result = 'It\'s a tie!';
+    tieCount++;
+    celebrate();
+    changeBackgroundColor('#3498db'); // Blue for tie
+  } else if (
+    (playerChoice === 'rock' && computerChoice === 'scissors') ||
+    (playerChoice === 'paper' && computerChoice === 'rock') ||
+    (playerChoice === 'scissors' && computerChoice === 'paper')
+  ) {
+    result = 'You win! 😄';
+    playerScore++;
+    celebrate();
+    changeBackgroundColor('#2ecc71'); // Green for win
+  } else {
+    result = 'You lose! 😢';
+    computerScore++;
+    celebrate();
+    changeBackgroundColor('#e74c3c'); // Red for lose
+  }
 
-const drawGame = () => {
-    msg.innerText = "Game Drawn!. Play again.";
-    msg.style.backgroundColor = "blue";
-};
+  totalCount++;
+  updateScore(result);
+}
 
-const showWinner = (userWin, userChoice, compChoice) => {
-    if (userWin) {
-        userScore++;
-        userScorePara.innerText = userScore;
-        msg.innerText = `You Win! Your ${userChoice} beats ${compChoice}`;
-        msg.style.backgroundColor = "green";
-    } else {
-        compScore++;
-        compScorePara.innerText = compScore;
-        msg.innerText = `You Lose!. ${compChoice} beats your ${userChoice}`;
-        msg.style.backgroundColor = "red";
-    }
-};
+function celebrate() {
+  document.getElementById('result').classList.add('celebration', 'pulsate');
+  setTimeout(() => {
+    document.getElementById('result').classList.remove('celebration', 'pulsate');
+  }, 1000);
+}
 
-const playGame = (userChoice) => {
-    //Generate computer choice
-    const compChoice = genCompChoice();
+function changeBackgroundColor(color) {
+  document.body.style.backgroundColor = color;
+  setTimeout(() => {
+    document.body.style.backgroundColor = '#f5f5f5'; // Reset to default
+  }, 1000);
+}
 
-    if (userChoice === compChoice) {
-        //Draw Game
-        drawGame();
-    } else {
-        let userWin = true;
-        if (userChoice === "Rock") {
-            //scissors, paper
-            userWin = compChoice === "Paper" ? false : true;
-        } else if (userChoice === "Paper") {
-            //rock, scissors
-            userWin = compChoice === "Scissors" ? false : true;
-        } else {
-            //rock, paper
-            userWin = compChoice === "Rock" ? false : true;
-        }
-        showWinner(userWin, userChoice, compChoice);
-    }
-};
-
-choices.forEach((choice) => {
-    choice.addEventListener("click", () => {
-        const userChoice = choice.getAttribute("id");
-        playGame(userChoice);
-    });
-});
+function updateScore(result) {
+  document.getElementById('result').innerHTML = result;
+  document.getElementById('score').innerHTML = `Player: ${playerScore}, Computer: ${computerScore}, Ties: ${tieCount}, Total: ${totalCount}`;
+}

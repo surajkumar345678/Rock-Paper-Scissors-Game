@@ -1,71 +1,75 @@
-* {
-    margin: 0;
-    padding: 0;
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
-}
-
-h1 {
-    background-color: #081b31;
-    color: white;
-    height: 5rem;
-    line-height: 5rem;
-}
-
-.choice {
-    height: 165px;
-    width: 165px;
-    border-radius: 50%;
+    margin-top: 50px;
+    background-color: #f5f5f5;
+    transition: background-color 0.5s ease;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  #result {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #333;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #score {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+  }
+  
+  #choices {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.choices {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    margin-top: 5rem;
-}
-
-.choice:hover {
-    background-color: #081b31;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .choice {
     cursor: pointer;
-}
-
-img {
-    height: 150px;
-    width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-
-}
-
-.scoreBoard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    margin-top: 3rem;
-    gap: 5rem;
-}
-
-#userScore,
-#compScore {
-    font-size: 4rem;
-}
-
-.msgContainer{
-    margin-top: 5rem;
-
-}
-
-#msg{
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: #081b31;
-    color: white;
-    font-size: 2rem;
-    display: inline;
-}
-
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .choice:hover {
+    background-color: #eee;
+    transform: scale(1.05);
+  }
+  
+  .celebration {
+    animation: celebrationAnimation 1s infinite;
+    font-size: 36px;
+    color: #27ae60;
+  }
+  
+  @keyframes celebrationAnimation {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
