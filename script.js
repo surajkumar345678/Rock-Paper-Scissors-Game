@@ -50,5 +50,5 @@ function changeBackgroundColor(color) {
 
 function updateScore(result) {
   document.getElementById('result').innerHTML = result;
-  document.getElementById('score').innerHTML = `Player: ${playerScore}, Computer: ${computerScore}, Ties: ${tieCount}, Total: ${totalCount}`;
+  document.getElementById('score').innerHTML = `Player: ${playerScore}, Computer: ${computerScore}, Ties: ${tieCount}, Total Moves: ${totalCount}`;
 }
